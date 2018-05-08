@@ -1,0 +1,122 @@
+<div class="row">
+    <div class="col s12">
+        <h4><i class="material-icons">keyboard_arrow_right</i>Restaurante<small class="grey-text">Atualizar dados do restaurante</small></h4>
+    </div>
+    <div class="col s9">
+        <form class="row" (submit)="save($event)">
+            <div class="input-field col s12">
+                <input id="name" name="name" type="text" placeholder="Nome" >
+                <label for="name">Nome do restaurante</label>
+            </div>
+            <div class="input-field col s12">
+                <textarea id="description" name="description" class="materialize-textarea" placeholder="Descrição"></textarea>
+                <label for="description">Descrição do restaurante</label>
+            </div>
+
+            <div class="input-field col s6">
+                <input id="phone" type="text" name="phone"  placeholder="Telefone">
+                <label for="phone">Telefone</label>
+            </div>
+
+            <div class="input-field col s6">
+                <input id="cep" type="text" name="cep" placeholder="CEP">
+                <label for="cep">Código Postal</label>
+            </div>
+
+            <div class="input-field col s9">
+                <input id="address" type="text" name="address"  placeholder="Endereço">
+                <label for="address">Endereço</label>
+            </div>
+
+            <div class="input-field col s3">
+                <input id="number" type="text" name="number"  placeholder="Número">
+                <label for="number">Número</label>
+            </div>
+
+            <div class="input-field col s6">
+                <input id="city" type="text" name="city"  placeholder="Cidade">
+                <label for="city">Cidade</label>
+            </div>
+
+            <div class="input-field col s6">
+                <input id="neighborhood" type="text" name="neighborhood"  placeholder="Bairro">
+                <label for="neighborhood">Bairro</label>
+            </div>
+
+            <div class="input-field col s6">
+                <input id="state" type="text" name="state"  placeholder="Estado">
+                <label for="state">Estado</label>
+            </div>
+
+            <div class="input-field col s12">
+                <input id="complement" type="text" name="complement"  placeholder="Complemento">
+                <label for="complement">Complemento</label>
+            </div>
+
+            <div class="input-field col s12">
+                <input type="submit" value="Salvar" class="btn">
+            </div>
+        </form>
+    </div>
+
+    <div class="col s3">
+        <div class="card-panel grey white-text center-align photo-changer"
+             [ngClass]="{'lighten-1': dragging}"
+             (click)="file.click()"
+             (drop)="upload($event)"
+             (dragover)="dragover($event)"
+             (dragleave)="dragging = false">
+
+        <i class="material-icons">insert_photo</i>
+            <p *ngIf="!dragging;else release">Arraste a foto para aqui ou clique para enviar</p>
+        <ng-template #release><p>Solte para enviar</p></ng-template>
+        <input type="file" accept="image/*" #file style="display: none">
+        </div>
+    </div>
+</div>
+
+<div class="row">
+    <div class="col s12">
+        <div class="card">
+            <div class="card-content">
+                <div class="row">
+                    <div class="col s12 margin-bottom">
+                        <span class="card-title">Fotos</span>
+                    </div>
+
+                    <div class="col s3 margin-bottom">
+                        <img src="http://materializecss.com/images/sample-1.jpg" class="materialboxed responsive-img">
+                        <a class="btn"><i class="material-icons">cancel</i></a>
+                    </div>
+                    <div class="col s3 margin-bottom">
+                        <img src="http://materializecss.com/images/sample-1.jpg" class="materialboxed responsive-img">
+                        <a class="btn"><i class="material-icons">cancel</i></a>
+                    </div>
+                    <div class="col s3 margin-bottom">
+                        <img src="http://materializecss.com/images/sample-1.jpg" class="materialboxed responsive-img">
+                        <a class="btn"><i class="material-icons">cancel</i></a>
+                    </div>
+                    <div class="col s3 margin-bottom">
+                        <img src="http://materializecss.com/images/sample-1.jpg" class="materialboxed responsive-img">
+                        <a class="btn"><i class="material-icons">cancel</i></a>
+                    </div>
+                    <div class="col s3 margin-bottom">
+                        <img src="http://materializecss.com/images/sample-1.jpg" class="materialboxed responsive-img">
+                        <a class="btn"><i class="material-icons">cancel</i></a>
+                    </div>
+                </div>
+                <div class="card-action">
+                    <div class="file-field input-field">
+                        <div class="btn">
+                            <span>Foto</span>
+                            <input type="file">
+                        </div>
+                        <div class="file-path-wrapper">
+                            <input type="text" class="file-path validate">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
