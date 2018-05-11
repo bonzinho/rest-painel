@@ -1,4 +1,6 @@
 import {Component, OnInit} from "@angular/core";
+import { DishesService } from './dishes.service';
+import { AppHttpService } from '../app-http.service';
 
 @Component({
     selector: 'app-dishes',
@@ -6,5 +8,38 @@ import {Component, OnInit} from "@angular/core";
 })
 
 export class DishesComponent implements OnInit {
-    ngOnInit(){}
+
+    dishes: any = {};
+
+
+    constructor(private httpService: DishesService, protected authService: AppHttpService) {}  // a diferença deste para o edit.component é o authService, pois é necessário autnticação
+
+    ngOnInit() {
+        this.authService.getUser()
+            .then( (res) => {
+            let id = res.restaurant.id;
+            let options = {
+                filters: [
+                    { restaurant_id: id },
+                ]
+            };
+
+            this.httpService.eventEmitter
+                .subscribe(() => { // este subscribe é executado sempre que o emit é chamado, neste caso faz com que a listagem seja atualizada
+                    this.httpService.builder().list(options)
+                        .then((res) => this.dishes = res);
+                });
+
+            this.httpService.eventEmitter.emit(); // sempre que for chamado o emit é executado o subscribe em cima, que atualiza a lista
+
+        });
+    }
+
+    remove(id: number) {
+        this.httpService.builder().delete(id).then(() => {
+           this.httpService.eventEmitter.emit();
+        });
+    }
+
+
 }

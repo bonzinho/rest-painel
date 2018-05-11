@@ -16,22 +16,22 @@
         </div>
 
         <div class="input-field col s12">
-            <input id="name" name="name" type="text" placeholder="Nome do prato">
+            <input id="name" name="name" [(ngModel)]="dish.name" type="text" placeholder="Nome do prato">
             <label for="name">Nome do prato</label>
         </div>
 
         <div class="input-field col s12">
-            <textarea id="description" name="description"  class="materialize-textarea" placeholder="descrição"></textarea>
+            <textarea id="description" name="description"  [(ngModel)]="dish.description" class="materialize-textarea" placeholder="Descrição do prato"></textarea>
             <label for="description">Descrição</label>
         </div>
 
         <div class="input-field col s12">
-            <input id="price" name="price" type="text" placeholder="Preço do prato">
+            <input id="price" name="price" [(ngModel)]="dish.price" type="text" placeholder="Preço do prato">
             <label for="price">Valor</label>
         </div>
 
         <div class="input-field col s12">
-            <input type="submit" value="Salvar" class="btn">
+            <input type="submit" value="Guardar" class="btn">
         </div>
     </form>
 </div>

@@ -15,6 +15,7 @@ import { PasswordComponent } from './password.component';
 import { ProfileComponent } from './profile.component';
 
 import { RestaurantService } from './restaurant.service';
+import { DishesService } from './dishes.service';
 
 const appRoutes: Routes = [
     {
@@ -52,8 +53,9 @@ const appRoutes: Routes = [
         NewDisheComponent,
     ],
     providers: [
-        RestaurantService
+        RestaurantService,
+        DishesService
     ]
 })
 
-export class RestaurantsModule { }
+export class RestaurantsModule {}
