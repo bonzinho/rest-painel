@@ -1,7 +1,7 @@
 //Centraliza todas as requisições
 import {Injectable} from '@angular/core';
 import {Headers, RequestOptions} from '@angular/http';
-import { AppHttpService } from '../app-http.service';
+import { AppHttpService } from '../../app-http.service';
 
 import 'rxjs/add/operator/toPromise'; // importar promisses
 
@@ -27,9 +27,7 @@ export class RestaurantService extends AppHttpService {
     }
 
     upload(url: string, data: Object) {
-        console.log(url);
         const observable = this.http.post(this.url + '/' + url, data, {headers: this.header});
-
         return this.toPromise(observable);
     }
 }

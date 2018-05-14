@@ -1,7 +1,7 @@
 //Centraliza todas as requisições
 import {Injectable, EventEmitter} from '@angular/core';
 import {Headers, RequestOptions} from '@angular/http';
-import { AppHttpService } from '../app-http.service';
+import { AppHttpService } from '../../app-http.service';
 
 import 'rxjs/add/operator/toPromise'; // importar promisses
 
@@ -22,17 +22,13 @@ export class DishesService extends AppHttpService {
     update(id: number, data: object) {
         const _options = new RequestOptions({headers: this.header});
         const url = this.url;
-        return this.http.post(url + '/' + id, data, _options)
-            .toPromise()
-            .then((res) => {
-                return res.json() || {};
-            });
+        let observable = this.http.post(url + '/' + id, data, _options);
+        return this.toPromise(observable);
     }
 
     upload(url: string, data: Object) {
 
         const observable = this.http.post(this.url + '/' + url, data, {headers: this.header});
-
         return this.toPromise(observable);
     }
 

@@ -1,6 +1,6 @@
 import {Component, OnInit} from "@angular/core";
-import { DishesService } from './dishes.service';
-import { AppHttpService } from '../app-http.service';
+import { DishesService } from '../services/dishes.service';
+import { AuthService } from '../../user/services/auth.service';
 
 @Component({
     selector: 'app-dishes',
@@ -12,7 +12,7 @@ export class DishesComponent implements OnInit {
     dishes: any = {};
 
 
-    constructor(private httpService: DishesService, protected authService: AppHttpService) {}  // a diferença deste para o edit.component é o authService, pois é necessário autnticação
+    constructor(private httpService: DishesService, protected authService: AuthService) {}  // a diferença deste para o edit.component é o authService, pois é necessário autnticação
 
     ngOnInit() {
         this.authService.getUser()

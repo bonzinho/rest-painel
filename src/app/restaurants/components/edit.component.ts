@@ -1,6 +1,6 @@
 import {Component, OnInit} from '@angular/core';
-import { AppHttpService } from '../app-http.service';
-import { RestaurantService } from './restaurant.service';
+import { AuthService } from '../../user/services/auth.service';
+import { RestaurantService } from '../services/restaurant.service';
 import * as jQuery from 'jquery';
 
 @Component({
@@ -17,10 +17,10 @@ export class EditComponent implements OnInit {
     upload_status: string = 'not';
     restaurantPhoto: any = null;
 
-    constructor(protected appHttpServices: AppHttpService, protected httpService: RestaurantService) {}
+    constructor(protected authService: AuthService, protected httpService: RestaurantService) {}
 
     ngOnInit() {
-        this.appHttpServices.getUser().then( (res) => {
+        this.authService.getUser().then( (res) => {
             let id = res.restaurant.id;
             this.httpService.builder().view(id)
                 .then( (res) => {

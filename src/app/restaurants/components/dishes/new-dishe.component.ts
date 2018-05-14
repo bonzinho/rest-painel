@@ -1,8 +1,8 @@
 import {Component, OnInit} from '@angular/core';
 import {Router} from '@angular/router';
 import * as jQuery from 'jquery'; // importar o jquery
-import {AppHttpService} from '../../app-http.service';
-import { DishesService } from '../dishes.service';
+import { AuthService } from '../../../user/services/auth.service';
+import { DishesService } from '../../services/dishes.service';
 
 @Component({
     selector: 'app-new-dishe',
@@ -13,7 +13,7 @@ export class NewDisheComponent implements OnInit {
 
     dish: any = {};
 
-    constructor(private router: Router, protected authService: AppHttpService, protected httpService: DishesService) {}
+    constructor(private router: Router, protected authService: AuthService, protected httpService: DishesService) {}
 
     ngOnInit() {
 

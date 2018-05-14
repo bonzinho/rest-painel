@@ -3,19 +3,17 @@ import {NgModule} from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import {CommonModule} from '@angular/common';
 import { RouterModule, Routes } from '@angular/router';
-import { DashboardComponent } from './dashboard.component';
-import { EvaluationComponent } from './dashboard/evaluation.component';
+import { DashboardComponent } from './components/dashboard.component';
+import { EvaluationComponent } from './components/dashboard/evaluation.component';
 
-import { DishesComponent } from './dishes.component';
-import { NewDisheComponent } from './dishes/new-dishe.component';
-import { EditDisheComponent } from './dishes/edit-dishe.component';
+import { DishesComponent } from './components/dishes.component';
+import { NewDisheComponent } from './components/dishes/new-dishe.component';
+import { EditDisheComponent } from './components/dishes/edit-dishe.component';
 
-import { EditComponent } from './edit.component';
-import { PasswordComponent } from './password.component';
-import { ProfileComponent } from './profile.component';
+import { EditComponent } from './components/edit.component';
 
-import { RestaurantService } from './restaurant.service';
-import { DishesService } from './dishes.service';
+import { RestaurantService } from './services/restaurant.service';
+import { DishesService } from './services/dishes.service';
 
 const appRoutes: Routes = [
     {
@@ -32,8 +30,6 @@ const appRoutes: Routes = [
         ]
     },
     {path: 'edit', component: EditComponent},
-    {path: 'password', component: PasswordComponent},
-    {path: 'profile', component: ProfileComponent},
 ];
 
 @NgModule({
@@ -47,8 +43,6 @@ const appRoutes: Routes = [
         EvaluationComponent,
         DishesComponent,
         EditComponent,
-        PasswordComponent,
-        ProfileComponent,
         EditDisheComponent,
         NewDisheComponent,
     ],

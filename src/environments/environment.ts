@@ -5,5 +5,7 @@
 
 export const environment = {
   production: false,
-  server_url: 'http:/localhost:8000' // Servidor da nossa API Lumen
+  server_url: 'http://localhost:8000', // Servidor da nossa API Lumen
+  client_id: 5,
+  client_secret: 'aSHRYVzVIbaYjEpJimGqwivQmNDrDCkP6oSMOZGi',
 };

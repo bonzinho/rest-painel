@@ -7,17 +7,17 @@
         <div class="card-panel">
             <form class="row" (submit)="save($event)">
                 <div class="input-field col s12">
-                    <input id="name" type="text" name="name">
+                    <input id="name" type="text" name="name" [(ngModel)]="user.name">
                     <label for="name">Nome</label>
                 </div>
 
                 <div class="input-field col s12">
-                    <input id="email" type="email" name="email">
+                    <input id="email" type="email" name="email" [(ngModel)]="user.email">
                     <label for="email">E-mail</label>
                 </div>
 
                 <div class="input-field col s12">
-                    <input type="submit" value="Salvar" class="btn">
+                    <input type="submit" value="Guardar" class="btn">
                 </div>
             </form>
         </div>
