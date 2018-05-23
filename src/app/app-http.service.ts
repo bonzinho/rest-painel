@@ -33,7 +33,7 @@ export class AppHttpService {
 
     // Construtor de rotas para as requisições
     builder(resource: string) {
-        this.url =  'http://localhost:8000/api/v1/' + resource;
+        this.url =  environment.server_url + '/api/v1/' + resource;
         return this;
     }
 
