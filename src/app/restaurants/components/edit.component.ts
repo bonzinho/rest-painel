@@ -21,6 +21,7 @@ export class EditComponent implements OnInit {
 
     ngOnInit() {
         this.authService.getUser().then( (res) => {
+            console.log(res);
             let id = res.restaurant.id;
             this.httpService.builder().view(id)
                 .then( (res) => {
@@ -93,7 +94,7 @@ export class EditComponent implements OnInit {
                     .insert(this.address);
             })
             .then( () => {
-                // após a tarefa de atualizar o restaurante e o endereço pode ser feito alguma cois por isso then()
+                window.Materialize.toast('Restaurante Editado com sucesso');
             });
     }
 
@@ -103,7 +104,6 @@ export class EditComponent implements OnInit {
         const formData = new FormData();
         formData.append('restaurant_id', this.restaurant.id);
         formData.append('url', image_url);
-        //console.log(image_url);
         this.restaurantPhoto = formData;
     }
 

@@ -25,10 +25,11 @@ export class AppHttpService {
 
 
     setAccessToken() {
-        let token = this.getCookie('token');
-        const headers = new Headers();
-        headers.append('Authorization', 'Bearer ' + token);
-        this.header = headers;
+        return new Promise((resolve, reject) => {
+            const token = this.getCookie('token');
+            this.header = new Headers({ 'Authorization': 'Bearer ' + token, 'Accept': 'application/json' });
+            resolve();
+        });
     }
 
     // Construtor de rotas para as requisições
@@ -81,6 +82,14 @@ export class AppHttpService {
         const _url = this.url;
 
         let observable = this.http.delete(_url + '/' + id, _options);
+        return this.toPromise(observable);
+    }
+
+    download() {
+        let header: Headers;
+        let token = this.getCookie('token');
+        header = new Headers({'Authorization': 'Bearer ' + token, 'Accept': 'application/json;', 'Content-Disposition': 'attachment;', 'responseType': 'blob'});
+        let observable = this.http.get(this.url, {headers: header});
         return this.toPromise(observable);
     }
 

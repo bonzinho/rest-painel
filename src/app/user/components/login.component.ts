@@ -40,9 +40,10 @@ export class LoginComponent {
             scope: '',
         };
 
-        this.authService.login(data).then((res) => { // obtem o token
-            document.cookie = 'token=' + res.access_token + '; expires=' + res.expires_in; // Presiste o token no cookie
-            this.authService.setAccessToken(); // faz o seAccesstoken par apoder armazanar na aplicação
+        this.authService.login(data)
+            .then((res) => { // obtem o token
+            // document.cookie = 'token=' + res.access_token + '; expires=' + res.expires_in; // Presiste o token no cookie
+            // this.authService.setAccessToken(); // faz o seAccesstoken par apoder armazanar na aplicação
             this.router.navigate(['/']); // reencaminha para a pagina inicial autenticado
         });
 

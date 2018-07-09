@@ -27,12 +27,21 @@ export class AuthService extends AppHttpService {
     }
 
     login(data) {
-        let observable = this.http.post(environment.server_url + '/oauth/token', data, {headers: this.header});
-        return this.toPromise(observable);
+        let observable = this.http.post(environment.server_url + '/oauth/token', data);
+        return this.toPromise(observable).then((res) => {
+            document.cookie = 'token=' + res.access_token + '; expires=' + res.expires_in;
+            return super.setAccessToken().then(() => {
+                this.eventEmitter.emit();
+            });
+        });
     }
 
     logout() {
         let observable = this.http.get(this.url + '/logout', {headers: this.header});
-        return this.toPromise(observable);
+        return this.toPromise(observable).then((res) => {
+            // Emitir uma alteração neste component/serviço
+            this.eventEmitter.emit();
+            return res;
+        });
     }
 }
